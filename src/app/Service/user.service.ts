@@ -12,7 +12,8 @@ export class UserService {
   status: string;
   constructor(private http: HttpClient) {}
   baseUrl: string = 'http://localhost:3000/'; // Base Url
-  baseUrl1: string = 'http://localhost:9091/api/'; // Base Url
+  baseUrl1: string = 'https://quotegeneration-springboot.herokuapp.com/api/'; // Base Url
+  baseUrl2: string = 'http://localhost:9091/api/'; // Base Url
 
   
   getAccounts() {
@@ -20,7 +21,7 @@ export class UserService {
   } // Get All accounts
   
   getUserById(createdBy: string) {
-    return this.http.get<User>(this.baseUrl + 'accounts/' + createdBy);
+    return this.http.get<User>(this.baseUrl1 + 'accounts/' + createdBy);
   } // Get User By  Id
 
   createAccount(user: Accounts) {
@@ -28,7 +29,7 @@ export class UserService {
   } // Create New Insured Account
 
   getQuestions() {
-    return this.http.get<Questions[]>(this.baseUrl+'questions');
+    return this.http.get<Questions[]>(this.baseUrl1+'questions');
   }
   createPolicy(question: QuestionsNew) {
     return this.http.post(this.baseUrl1+'policy', question);
