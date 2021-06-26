@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Questions } from 'src/app/Model/Questions';
 import { UserService } from 'src/app/Service/user.service';
+import * as XLSX from 'xlsx';  
 
 @Component({
   selector: 'app-generate-report',
@@ -9,6 +10,33 @@ import { UserService } from 'src/app/Service/user.service';
   styleUrls: ['./generate-report.component.css']
 })
 export class GenerateReportComponent implements OnInit {
+  @ViewChild('TABLE', { static: false }) TABLE: ElementRef;  
+  title = 'Excel';  
+  ExportTOExcel() {  
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.accounts);  
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();  
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');  
+    XLSX.writeFile(wb, 'Sheet.xls');  
+  }  
+  ExportTOCsv() {  
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.accounts);  
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();  
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');  
+    XLSX.writeFile(wb, 'Sheet.csv');  
+  }  
+
+  ExportTOText() {  
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.accounts);  
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();  
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');  
+    XLSX.writeFile(wb, 'Sheet.txt');  
+  }  
+  ExportTOPdf() {  
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.accounts);  
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();  
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');  
+    XLSX.writeFile(wb, 'Sheet.html');  
+  }  
 
   accounts: Questions[];
   userName:string;
@@ -19,7 +47,6 @@ export class GenerateReportComponent implements OnInit {
     if (localStorage.getItem('username') != null) {
       this.userService.getPolicy().subscribe((data) => {
         this.accounts = data;
-       
       });
     } else this.router.navigate(['/login']);
   }

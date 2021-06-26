@@ -1,11 +1,31 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
-<div class="container"  style="margin: 20px;" >
-    <input class="form-control" type="text" name="userName" [(ngModel)]="userName" (ngModelChange)="Search()"
-    placeholder="Enter User Name to search" style="margin: 10px;" >
+<div style="margin: 20px;" >
+  <table>
+    <tr>
+        <td style="width: 100%; padding-right: 150px;" >
+          <input class="form-control" type="text" name="userName" [(ngModel)]="userName" (ngModelChange)="Search()"
+          placeholder="Enter User Name to search" />   
+        </td>
+         <td style="width: 20%;" >
+          <button (click)="ExportTOExcel()" class="btn btn-success" style="margin-left: 20px;">Excel</button> 
+        </td>       
+        <td style="width: 20%;">
+          <button (click)="ExportTOCsv()" class="btn btn-success" style="margin-left: 20px;">CSV</button> 
+        </td>       
+        <td style="width: 20%;">
+          <button (click)="ExportTOText()" class="btn btn-success" style="margin-left: 20px;">Text</button> 
+        </td>
+        <td style="width: 20%;">
+          <button (click)="ExportTOPdf()" class="btn btn-success" style="margin-left: 20px;">HTML</button> 
+        </td>
+    </tr>
+ 
+</table>
 </div>
 <div width='200px'>
+   
     <table class="table" >
         <thead   class="bg-primary" style="color: white; font-size: 14px;">
             <tr style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">
