@@ -18,8 +18,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
-              "lodash",
-              "rxjs-compat"
+              "xlsx"
            ],
             "outputPath": "dist/QuoteGeneration-Heroku-Angular",
             "index": "src/index.html",
