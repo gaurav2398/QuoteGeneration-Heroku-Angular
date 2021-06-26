@@ -25,6 +25,7 @@
     "@angular/router": "~12.0.1",
     "bootstrap": "^5.0.1",
     "express": "^4.17.1",
+    "lodash-es": "^4.17.21",
     "ngx-bootstrap": "^6.2.0",
     "path": "^0.12.7",
     "rxjs": "~6.6.0",
